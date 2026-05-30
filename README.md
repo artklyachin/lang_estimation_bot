@@ -65,15 +65,3 @@ cd bot
 pip install -r requirements-test.txt
 pytest tests/
 ```
-
-## Прямой доступ к БД
-
-```bash
-docker exec lang_estimation_bot-bot-1 python3 -c "
-import sqlite3
-conn = sqlite3.connect('/data/db.sqlite3')
-for r in conn.execute('SELECT user_id, username, taken_at FROM speech_results ORDER BY taken_at DESC LIMIT 10'):
-    print(r)
-conn.close()
-"
-```
